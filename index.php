@@ -1,0 +1,73 @@
+<?php include 'translations.php'; ?>
+<!DOCTYPE html>
+<html lang="<?php echo $lang; ?>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JIC - 3D tisk</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav-left">
+                <div class="logo">JIC</div>
+                <ul class="nav-links">
+                    <li><a href="#home"><?php echo $t['nav-home']; ?></a></li>
+                    <li><a href="#gallery"><?php echo $t['nav-gallery']; ?></a></li>
+                    <li><a href="#printer"><?php echo $t['nav-printer']; ?></a></li>
+                    <li><a href="#contact"><?php echo $t['nav-contact']; ?></a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <div class="language-switcher">
+                    <a href="?lang=cs" class="lang-btn <?php echo $lang == 'cs' ? 'active' : ''; ?>">CZ</a>
+                    <a href="?lang=ru" class="lang-btn <?php echo $lang == 'ru' ? 'active' : ''; ?>">RU</a>
+                    <a href="?lang=ua" class="lang-btn <?php echo $lang == 'ua' ? 'active' : ''; ?>">UA</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1 class="floating"><?php echo $t['hero-title']; ?></h1>
+            <button class="cta-button" onclick="openOrderModal()"><?php echo $t['cta-button']; ?></button>
+        </div>
+    </section>
+
+    <div id="orderModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2><?php echo $t['modal-title']; ?></h2>
+                <button class="modal-close" onclick="closeOrderModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="orderForm" action="orders.send.php" method="POST">
+                    <label><?php echo $t['form-firstname']; ?></label>
+                    <input type="text" name="firstName" required>
+                    <button type="submit" class="submit-btn"><?php echo $t['submit-btn']; ?></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <section class="section">
+            <h2><?php echo $t['about-title']; ?></h2>
+            <div style="text-align: center;">
+                <p><?php echo $t['about-text1']; ?></p>
+                <p><?php echo $t['about-text2']; ?></p>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 JIC 3D Tisk. <?php echo $t['footer-text']; ?></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
